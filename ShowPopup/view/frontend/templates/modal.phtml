@@ -1,0 +1,39 @@
+<div id="popup-modal" style="color:black; font-size:x-large; font-weight:100;">
+<?php 
+//    echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('popupblock')->toHtml();
+   echo "Popup Modal";
+   ?>
+</div>
+<script type="text/javascript">
+
+     require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                buttons: [{
+                    text: $.mage.__('Ok'),
+                    class: 'mymodal',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#popup-modal'));
+            
+            $("#popup-modal").modal("openModal");
+            $('button.checkout').attr('disabled', 'disabled');
+            
+        }
+    );
+
+</script>
